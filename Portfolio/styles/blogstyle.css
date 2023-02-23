@@ -1,0 +1,124 @@
+* {
+	font-family: "Verdana", san-serif;	
+}
+
+body {
+	background-color: rgb(214,255,224) !important;
+}
+
+nav {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+nav ul li{
+	padding-left: 20px;
+}
+
+nav ul li a:hover{
+	background-color: black;
+	border-radius: 5px; 
+}
+
+.header {
+	margin-bottom: 100px;
+}
+
+.footer {
+	margin-top: 50px;
+}
+
+#slika{
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	margin-top: 2px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.dropdown .dropdown-menu {
+	margin-right: 20px;
+	background-color: rgb(26,26,26);
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+	color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.dropdown-menu a:hover {
+	background-color: black;
+	font-size: 800;
+} 
+
+.oblik {
+	box-sizing: 
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	border-left: 1px solid lightgrey;
+	border-right: 1px solid lightgrey;
+	padding-bottom: 20px;
+}
+
+.lista {
+	list-style-type: none;
+	padding: 10px;
+}
+
+
+.lista a {
+	color: black;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.lista li a:hover {
+	color: black;
+	font-weight: bolder;
+}
+
+.slika1 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	width: 700px;
+}
+
+
+/* preuzeto sa https://avexdesigns.com/blog/responsive-youtube-embed */
+.video-yt {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%;
+	height: 0;
+}
+
+.video-yt iframe, .video-yt object, .video-yt embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 90%;
+	height: 100%;
+}
+
+p {
+	margin-top: 20px;
+}
+
+.mala {
+	margin: 5px;
+	width: 100px;
+}
+
+.malioblik {
+	background-color: white;
+	border: 1px solid lightgrey;
+	padding: 10px;
+}
+

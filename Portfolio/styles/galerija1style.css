@@ -1,0 +1,56 @@
+* {
+	font-family: "Verdana", san-serif;	
+}
+
+body {
+	background-color: rgb(214,255,224) !important;
+}
+
+nav {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+nav ul li{
+	padding-left: 20px;
+}
+
+nav ul li a:hover{
+	background-color: black;
+	border-radius: 5px; 
+}
+
+.header {
+	margin-bottom: 100px;
+}
+
+.footer {
+	margin-top: 50px;
+}
+
+#slika{
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	margin-top: 2px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.dropdown .dropdown-menu {
+	margin-right: 20px;
+	background-color: rgb(26,26,26);
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+	color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.dropdown-menu a:hover {
+	background-color: black;
+	font-size: 800;
+} 
