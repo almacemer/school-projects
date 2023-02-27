@@ -1,0 +1,26 @@
+body {
+  background-color: #e7f0ff !important;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
+a {
+  color: #00B7FF;
+}
+
+.dugmici {
+  background-color: #645ed2 !important;
+  color: #e7f0ff !important;
+
+}
+
+.forma-publika {
+  padding-top: 150px;
+  background-color: #645ed2 !important;
+  color: #e7f0ff !important;
+}
+
+.kod-dugmic {
+  border-radius: 40px;
+  background-color: darkorange !important;
+}

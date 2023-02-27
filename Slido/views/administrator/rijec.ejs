@@ -1,0 +1,6 @@
+<tr id="rijec<%= rijec.id %>">
+    <td><%= broj + 1 %></td>
+    <td><input type="text" class="form-control" value="<%= rijec.rijec %>" id="<%= rijec.id %>"></td>
+    <td><button class="btn btn-primary" onclick="urediRijec(<%= rijec.id %>)">Uredi</button></td>
+    <td><button class="btn btn-danger" onclick="obrisiRijec(<%= rijec.id %>)">Obriši</button></td>
+</tr>
