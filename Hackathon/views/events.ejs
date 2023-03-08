@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
+  <title><%= title %></title>
+</head>
+<body id="bb">
+<div id="container">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color:rgb(201, 18, 73)">DSE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Events
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/events/Music">Music</a></li>
+              <li><a class="dropdown-item" href="/events/Sport">Sport</a></li>
+              <li><a class="dropdown-item" href="/events/Culture">Culture</a></li>
+              <li><a class="dropdown-item" href="/events/Theater">Theater</a></li>
+              <li><a class="dropdown-item" href="/events/Other">Other</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <a href="/login">
+            <button  style="margin-right: 1rem;" class="btn btn-outline-primary" type="button">Login</button>
+          </a>
+          <a href="/register">
+            <button class="btn btn-outline-primary" type="button">Register</button>
+          </a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <h1 class="text-light mt-4 mb-4"><%= title.toUpperCase() %></h1>
+  <div class="container col-5">
+    <% for(let i = 0; i < events.length; i++) { %>
+      <div style="margin-bottom: 2rem" class="card">
+        <div class="card-header">
+          <%= events[i].title %>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+          Date: <%= moment(events[i].date).format('DD-MMM-YYYY') %><br>
+          Time: <%= moment(events[i].time, 'hh:mm:ss').format('hh:mm a') %><br>
+          Location: <%= events[i].place %><br>
+          Available seats: <%= events[i].number_of_seats %>
+          </p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            View map
+          </button>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#reserv">
+            Make a reservation
+          </button>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  <div id="clear"></div>
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2023 DSE</span>
+    </div>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<% for(let i = 0; i < events.length; i++) { %>
+  <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Map</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% if (events[i].place === 'Olimpijska dvorana Zetra') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Olimpijska+dvorana+Juan+Antonio+Samaranch,+Sarajevo,+Bosna+i+Hercegovina&key=${key}`;
+        %>
+          <div style="max-width:100%;overflow:hidden;color:red;width:900px;height:500px;"><div id="g-mapdisplay" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-code-enabler" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="get-map-data">premium bootstrap themes</a><style>#g-mapdisplay img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
+        <% } else if ( events[i].place === 'Prirodno-matematički fakultet') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Prirodno-matematički+fakultet,+Zmaja+od+Bosne,+Sarajevo,+Bosna+i+Hercegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;resize:none;max-width:100%;width:900px;height:500px;"><div id="my-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="embed-ded-maphtml" href="https://www.bootstrapskins.com/themes" id="inject-map-data">premium bootstrap themes</a><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
+        <% } else if ( events[i].place === 'Avaz Twist Tower') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Avaz+Twist+Tower,+Tešanjska,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( events[i].place === 'Hotel Europe') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Hotel+Europe&key=${key}`;
+        %>
+          <div style="overflow:hidden;resize:none;max-width:100%;width:900px;height:500px;"><div id="my-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="embed-ded-maphtml" href="https://www.bootstrapskins.com/themes" id="inject-map-data">premium bootstrap themes</a><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
+        <% } else if ( events[i].place === 'Hotel Holiday') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Hotel+Holiday,+Zmaja+od+Bosne,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( events[i].place === 'Vijećnica') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Vijećnica,+Obala+Kulina+bana,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( events[i].place === 'Vječna vatra') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Vječna+vatra,+Ferhadija,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( events[i].place === 'ARIA') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Aria,+Trg+djece+Sarajeva,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( events[i].place === 'Narodno pozorište') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Narodno+pozorište+u+Sarajevu,+Obala+Kulina+bana,+Sarajevo,+Bosnia+and+Herzegovina&key=${api}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( events[i].place === 'Dom mladih Skenderija') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Skenderija,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:900px;height:500px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="modal fade" id="reserv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Make a reservation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="reservation" method="post" style="max-width: 30rem; display: flex; flex-direction: column; align-items: center; justify-content: center">
+            <!-- Email input -->
+            <input name="eventID" value="<%= events[i].id%>" hidden>
+            <div class="form-floating mb-3">
+              <input type="text" id="first_name" name="first_name" class="form-control" placeholder="first_name" required />
+              <label class="form-label" for="first_name">First name</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-floating mb-3">
+              <input type="text" id="last_name" name="last_name" class="form-control" placeholder="last_name" required />
+              <label class="form-label" for="last_name">Last name</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-floating mb-3">
+              <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required />
+              <label class="form-label" for="email">Email address</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-floating mb-3">
+              <input type="text" id="phone" name="phone" class="form-control" placeholder="060/000-000" required />
+              <label class="form-label" for="phone">Phone number</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">MAKE A RESERVATION</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  </div>
+<% } %>

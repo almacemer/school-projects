@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
+  <title><%= title %></title>
+  <script>
+    var today = moment().format("YYYY-MM-DD");
+    document.getElementById("date").min = today;
+  </script>
+</head>
+<body id="bb">
+<div id="container">
+  <nav class="navbar navbar-expand-lg bg-light bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color:rgb(201, 18, 73)">DSE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/user">Home</a>
+          </li>
+        </ul>
+        <form action="/logout" method="post" class="d-flex">
+            <button style="margin-right: 1rem;" class="btn btn-outline-primary" type="submit">Log Out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <h1 style="margin-top: 2rem;" class="text-light"><%= title %></h1>
+  <div id="panels">
+    <div id="panel3">
+        <p>TITLE: <%= event_details.title %></p>
+        <p>DATE: <%= moment(event_details.date).format('DD-MMM-YYYY') %></p>
+        <p>TIME: <%= moment(event_details.time, 'hh:mm:ss').format('hh:mm a') %></p>
+        <p>LOCATION: <%= event_details.place %></p>
+        <p>TYPE: <%= event_details.type %></p>
+        <p>NUMBER OF SEATS: <%= event_details.number_of_seats %></p>
+    </div>
+    <div id="panel2">
+      <% if (event_details.place === 'Olimpijska dvorana Zetra') {
+        const src = `https://www.google.com/maps/embed/v1/place?q=Olimpijska+dvorana+Juan+Antonio+Samaranch,+Sarajevo,+Bosna+i+Hercegovina&key=${key}`;
+      %>
+        <div style="max-width:100%;overflow:hidden;color:red;width:520px;height:520px;"><div id="g-mapdisplay" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-code-enabler" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="get-map-data">premium bootstrap themes</a><style>#g-mapdisplay img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
+      <% } else if ( event_details.place === 'Prirodno-matematički fakultet') {
+        const src = `https://www.google.com/maps/embed/v1/place?q=Prirodno-matematički+fakultet,+Zmaja+od+Bosne,+Sarajevo,+Bosna+i+Hercegovina&key=${key}`;
+      %>
+          <div style="overflow:hidden;resize:none;max-width:100%;width:520px;height:520px;"><div id="my-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="embed-ded-maphtml" href="https://www.bootstrapskins.com/themes" id="inject-map-data">premium bootstrap themes</a><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
+      <% } else if ( event_details.place === 'Avaz Twist Tower') {
+        const src = `https://www.google.com/maps/embed/v1/place?q=Avaz+Twist+Tower,+Tešanjska,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+      %>
+          <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src%>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+      <% } else if ( event_details.place === 'Hotel Europe') {
+        const src = `https://www.google.com/maps/embed/v1/place?q=Hotel+Europe&key=${key}`;
+      %>
+           <div style="overflow:hidden;resize:none;max-width:100%;width:520px;height:520px;"><div id="my-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="embed-ded-maphtml" href="https://www.bootstrapskins.com/themes" id="inject-map-data">premium bootstrap themes</a><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
+      <% } else if ( event_details.place === 'Hotel Holiday') {
+        const src = `https://www.google.com/maps/embed/v1/place?q=Hotel+Holiday,+Zmaja+od+Bosne,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+      %>
+           <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+      <% } else if ( event_details.place === 'Vijećnica') {
+        const src = `https://www.google.com/maps/embed/v1/place?q=Vijećnica,+Obala+Kulina+bana,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+      %>
+           <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src%>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( event_details.place === 'Vječna vatra') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Vječna+vatra,+Ferhadija,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+        <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( event_details.place === 'ARIA') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Aria,+Trg+djece+Sarajeva,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+        <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( event_details.place === 'Narodno pozorište') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Narodno+pozorište+u+Sarajevu,+Obala+Kulina+bana,+Sarajevo,+Bosnia+and+Herzegovina&key=${api}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } else if ( event_details.place === 'Dom mladih Skenderija') {
+          const src = `https://www.google.com/maps/embed/v1/place?q=Skenderija,+Sarajevo,+Bosnia+and+Herzegovina&key=${key}`;
+        %>
+          <div style="overflow:hidden;max-width:100%;width:520px;height:520px;"><div id="embed-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="<%= src %>"></iframe></div><a class="google-map-html" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+        <% } %>
+    </div>
+  </div>
+  <div id="clear"></div>
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2023 DSE</span>
+    </div>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!-- Modal -->
+<div class="modal fade" id="create_event" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">CREATE NEW EVENT</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/user/create_event" method="post">
+          <div class="mb-3">
+            <label for="title" class="form-label">TITLE</label>
+            <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">DATE</label>
+            <input type="date" name="date" class="form-control" id="date" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="time" class="form-label">TIME</label>
+            <input type="time" name="time" class="form-control" id="time" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">LOCATION</label>
+            <select name="location" id="location" class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="Prirodno-matematički fakultet">Prirodno-matematički fakultet</option>
+              <option value="Vijećnica">Vijećnica</option>
+              <option value="Dom mladih Skenderija">Dom mladih Skenderija</option>
+              <option value="Olimpijska dvorana Zetra">Olimpijska dvorana Zetra</option>
+              <option value="Narodno pozorište">Narodno pozorište</option>
+              <option value="Vječna vatra">Vječna vatra</option>
+              <option value="ARIA">ARIA</option>
+              <option value="Hotel Europe">Hotel Europe</option>
+              <option value="Hotel Holiday">Hotel Holiday</option>
+              <option value="Avaz Twist Tower">Avaz Twist Tower</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">TYPE</label><div class="dropdown">
+              <select name="type" id="type" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="Music">Music</option>
+                <option value="Sport">Sport</option>
+                <option value="Culture">Culture</option>
+                <option value="Theater">Theater</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="num_of_seat" class="form-label">NUMBER OF SEATS</label>
+            <input type="number" class="form-control" id="num_of_seats" name="num_of_seats" aria-describedby="emailHelp">
+          </div>
+          <button type="submit" class="btn btn-success">CREATE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
+  <title><%= title2 %></title>
+</head>
+<body id="bb">
+<div id="container">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color:rgb(201, 18, 73)"><%= title1 %></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Events
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/events/Music">Music</a></li>
+              <li><a class="dropdown-item" href="/events/Sport">Sport</a></li>
+              <li><a class="dropdown-item" href="/events/Culture">Culture</a></li>
+              <li><a class="dropdown-item" href="/events/Theater">Theater</a></li>
+              <li><a class="dropdown-item" href="/events/Other">Other</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <a href="/login">
+            <button  style="margin-right: 1rem;" class="btn btn-outline-primary" type="button">Login</button>
+          </a>
+          <a href="/register">
+            <button class="btn btn-outline-primary" type="button">Register</button>
+          </a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <h1 style="margin-top: 2rem;" class="text-light"><%= title2 %></h1>
+
+
+  <div id="main_cards">
+    <div class="card" style="width: 18rem;">
+      <img src="https://source.unsplash.com/random/300x300/?music" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Music</h5>
+        <p class="card-text">Visitors of Sarajevo can enjoy a wide range of musical events from sevdah to modern music.</p>
+        <a href="/events/Music" class="btn btn-outline-primary">Check out</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="https://source.unsplash.com/random/300x300/?sport" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Sport</h5>
+        <p class="card-text">There are a number of events that could be interesting for sports-loving tourists.</p>
+        <a href="/events/Sport" class="btn btn-outline-primary">Check out</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="https://source.unsplash.com/random/300x300/?sarajevo" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Culture</h5>
+        <p class="card-text">Sarajevo enjoys the reputation of one of the most important centers of culture in Europe.</p>
+        <a href="/events/Culture" class="btn btn-outline-primary">Check out</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="https://source.unsplash.com/random/300x300/?theater" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Theater</h5>
+        <p class="card-text">On the stages of Sarajevo, interesting productions are regularly staged.</p>
+        <a href="/events/Theater" class="btn btn-outline-primary">Check out</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="clear"></div>
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2023 DSE</span>
+    </div>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
