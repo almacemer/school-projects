@@ -1,0 +1,97 @@
+:root {
+    --background: #ffffff;
+    --text-primary: #000;
+    --text-secondary: #8e05c2;
+    --accent: #8e05c2;
+    --border: #333;
+    --form-bg: #fff;
+}
+
+[data-theme='dark'] {
+    --background: #000;
+    --text-primary: #fff;
+    --text-secondary: #8e05c2;
+    --accent: #8e05c2;
+    --border: #808080;
+    --form-bg: #191919;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--text-secondary);
+}
+
+.pozadina {
+    background-color: var(--background);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: .8rem;
+    transition: all .5s;
+}
+
+.login h1 {
+    text-align: center;
+    margin: -6rem 0 2rem;
+    font-size: 48px;
+  }
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 8px 0;
+    font-weight: 600;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+button {
+    background-color: rgb(55, 163, 231);
+    color: rgb(255, 255, 255);
+    margin: 16px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: blanchedalmond;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.theme-toggle i {
+    font-size: 2rem;
+    cursor: pointer;
+}
+  
+.theme-toggle {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    width: 500px;
+    margin: auto;
+    box-shadow: 0px 0px 12px var(--border);
+    border-radius: 8px;
+    background-color: var(--form-bg);
+  }
