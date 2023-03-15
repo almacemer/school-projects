@@ -1,0 +1,152 @@
+:root {
+  --background: #ffffff;
+  --text-primary: #000;
+  --text-secondary: #8e05c2;
+  --accent: #8e05c2;
+  --border: #333;
+  --form-bg: #fff;
+}
+
+[data-theme='dark'] {
+  --background: #000;
+  --text-primary: #fff;
+  --text-secondary: #8e05c2;
+  --accent: #8e05c2;
+  --border: #808080;
+  --form-bg: #191919;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.naslov {
+  text-decoration:underline;
+  text-align: center;
+  margin: 20px;
+  font-size: 30px;
+}
+
+.ikona {
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.pozadina {
+  margin: 0px;
+  background-color: var(--background);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 11px;
+  transition: all .5s;
+}
+
+.login h1 {
+  text-align: center;
+  margin: 0px;
+  font-size: 48px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.forma {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+button {
+  background-color: rgb(55, 163, 231);
+  color: rgb(255, 255, 255);
+  margin: 16px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: blanchedalmond;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.theme-toggle i {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  width: 500px;
+  box-shadow: 0px 0px 12px var(--border);
+  border-radius: 8px;
+  background-color: var(--form-bg);
+}
+
+.putovanje {
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 30%;
+  margin: 20px;
+  padding: 20px;
+  
+}
+
+.putovanje:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.opis {
+  padding: 2px 16px;
+}
+
+.slika {
+  width: 100%;
+}
+
+.novoPutovanje {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  box-shadow: 0px 0px 12px var(--border);
+  border-radius: 8px;
+  background-color: var(--form-bg);
+  padding: 20px;
+  margin: auto;
+}
+
+.novoPutovanje h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
